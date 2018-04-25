@@ -17,6 +17,8 @@ public class CliqueCase implements MouseListener {
 		this.y=y;
 	}
 
+
+
 	public void mouseClicked(MouseEvent e) {
     }
     
@@ -25,15 +27,38 @@ public class CliqueCase implements MouseListener {
     
     public void mouseReleased(MouseEvent e) {
     	if(!bloc.getState()){
+    		int nbVoisin;
 	    	if(e.getButton() == MouseEvent.BUTTON1){
-	    		if(!this.bloc.tryDecouvre() && this.bloc.getFlag()==0){
+	    		boolean sortieTryDecouvre = this.bloc.tryDecouvre();
+	    		if(!sortieTryDecouvre && this.bloc.getFlag()==0){
 	    			this.bloc.setBackground(new Color(255,255,255));
-	    			System.out.println( this.jeu.bombeVoisin(this.x,this.y) );
-	    			this.texte.setText( ""+this.jeu.bombeVoisin(this.x,this.y) );
-	    		}	
+	    			nbVoisin=this.jeu.bombeVoisin(this.x,this.y);
+	    			if(nbVoisin!=0){
+	    				this.texte.setText(""+nbVoisin);
+	    			}else{
+	    				this.texte.setText("");
+	    				this.bloc.decouvreVoisin(this.x,this.y);
+	    			}
+	    			jeu.testVictoire();
+	    		}else if(sortieTryDecouvre){
+	    			jeu.defaite(this.x,this.y);
+	    		}
 	    	}
 	    	if(e.getButton() == MouseEvent.BUTTON3){
-	    		bloc.setBackground(new Color(100,100,100));
+	    		this.bloc.nextFlag();
+	    		if(this.bloc.getFlag() == 0){
+	    			this.bloc.setBackground(new Color(0,100,0));
+	    			this.texte.setText("");
+	    		}
+	    		if(this.bloc.getFlag() == 1){
+	    			this.bloc.setBackground(new Color(253,106,0));
+	    			this.texte.setText("\u2605"); //affiche étoile
+	    		}
+	    		if(this.bloc.getFlag() == 2){
+	    			this.bloc.setBackground(new Color(255,255,50));
+	    			this.texte.setText("?");
+	    		}
+	    		jeu.getEtoiles();
 	    	}
 	    }
     }

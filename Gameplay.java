@@ -1,40 +1,38 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class Gameplay{
+public class Gameplay extends JFrame{
 	private Grille jeu;
+	private InfoJeu info;
 
 	public Gameplay(int nbBombe, int lignes,int colonnes){
-		JFrame fenetre = new JFrame();
-		JPanel info = new JPanel();
-		int sup=0;
-		info.setBackground(new Color(100,100,100));
-		this.jeu = new Grille(nbBombe,lignes,colonnes);
-		if(lignes>colonnes){
-			sup=lignes;
+		super("Demineur par J.Demartin et R.Gaudru");
+
+		int maximum;
+		if(lignes>colonnes){	//permet de rendre l'affichage plus élégant quand le nombre de colonnes est trop grand par rapport au nombre de lignes
+			maximum=lignes;
 		}else{
 			if(lignes<(colonnes/2)){
-				sup=(colonnes/2);
+				maximum=(colonnes/2);
 			}else{
-				sup=colonnes;
+				maximum=colonnes;
 			}
 		}
 		int tailleXjeu = colonnes*25+(colonnes+2)*5;
-		int tailleY = (sup+1)*25+(sup+8)*6; //minimum = 4*26+50 = 154
+		int tailleY = (maximum+1)*25+(maximum+8)*6; //minimum = (4+1)*25+(4+8)*6 = 197 pixels
 		int tailleXinfo = 150;
-		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		fenetre.setLocationRelativeTo(null);
-		fenetre.setResizable(true);
-		fenetre.setTitle("Demineur par J.Demartin et R.Gaudru");
-		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLocationRelativeTo(null);
+		this.setResizable(false);
 
-		this.jeu.setPreferredSize(new Dimension(tailleXjeu,tailleY));
+		this.info = new InfoJeu(this,nbBombe);	//mise en place du panel contenant la grille de jeu
 		info.setPreferredSize(new Dimension(tailleXinfo,tailleY));
+		this.add(info,BorderLayout.EAST);
 
-		fenetre.setSize(tailleXjeu+tailleXinfo,tailleY);
-		fenetre.add(this.jeu,BorderLayout.WEST);
-		fenetre.add(info,BorderLayout.EAST);
-		fenetre.setVisible(true);
+		this.jeu = new Grille(nbBombe,lignes,colonnes,info);	//mise en place du panel contenant les informations sur la partie en cours
+		this.jeu.setPreferredSize(new Dimension(tailleXjeu,tailleY));
+		this.add(this.jeu,BorderLayout.WEST);
 
+		this.setSize(tailleXjeu+tailleXinfo,tailleY);
 	}
 }
