@@ -1,15 +1,22 @@
 import java.util.Random;
+import java.awt.*;
+import javax.swing.*;
 
-public class Grille{
+public class Grille extends JPanel{
 	private Case[][] cases;
 	private int nbBombe;
 
-	public void Grille(int nbBombe, int lignes,int colonnes){
+	public Grille(int nbBombe, int lignes,int colonnes){
+		super();
+		this.setBackground(new Color(0,0,0));
 		this.nbBombe=nbBombe;
 		cases = new Case[lignes][colonnes];
 		for (int i = 0; i<lignes ; i++) {
 			for (int j = 0; j<colonnes ; j++) {
-				cases[i][j] = new Case();
+				cases[i][j] = new Case(i,j);
+				this.add(cases[i][j]);
+				cases[i][j].setBackground(new Color(i*20,100,j*20));
+				cases[i][j].setPreferredSize(new Dimension(80,80));
 			}
 		}
 		for (int i = 0; i<nbBombe; i++){
@@ -22,6 +29,7 @@ public class Grille{
 			}
 			else{
 				cases[nbI][nbJ].setBombe();
+				cases[nbI][nbJ].setBackground(new Color(255,0,0));
 			}
 		}
 	}

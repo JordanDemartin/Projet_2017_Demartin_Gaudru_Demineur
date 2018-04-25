@@ -1,17 +1,19 @@
-import 
+import java.awt.*;
+import javax.swing.*;
 
 public class Gameplay{
+	private Grille jeu;
 
 	public Gameplay(int nbBombe, int lignes,int colonnes){
 		JFrame fenetre = new JFrame();
-		panel[][] cases;
-		for (int i = 0; i<lignes ; i++) {
-			for (int j = 0; j<colonnes ; j++) {
-				panel[i][j] = new JPanel();
-				panel[i][j].addMouseListener();
-			}
-		}
+		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fenetre.setSize(colonnes*100,lignes*100);
+		fenetre.setLocationRelativeTo(null);
+		fenetre.setResizable(true);
+		fenetre.setTitle("Demineur par J.Demartin et R.Gaudru");
+		this.jeu=new Grille(nbBombe,lignes,colonnes);
+		fenetre.add(jeu);
+		fenetre.setVisible(true);
+
 	}
-
-
 }

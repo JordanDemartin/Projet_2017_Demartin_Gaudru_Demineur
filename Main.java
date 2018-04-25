@@ -1,5 +1,5 @@
 public class Main{
 	public static void main(String[] args){
-		//le Menu sera appeler
+		new Gameplay(10,5,3);
 	}
 }
