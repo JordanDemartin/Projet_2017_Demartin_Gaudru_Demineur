@@ -37,8 +37,7 @@ public class ActionFenetre implements WindowListener {
    * @param evenement
    */
 	public void windowClosing(WindowEvent evenement) {
-		System.out.println("Fenetre Save");
-		//this.partie.saveGameplay();
+		this.partie.saveGameplay();
 	} // avant fermeture
 
 	public void windowDeactivated(WindowEvent evenement){}   // arrière-plan

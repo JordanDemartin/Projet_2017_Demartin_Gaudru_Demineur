@@ -34,8 +34,7 @@ public class BoutonInfoJeu implements ActionListener{
 	public void actionPerformed(ActionEvent e){
 		String contenu = e.getActionCommand();
 		if ( contenu.equals("Sauvgarder et Quitter") ){
-			System.out.println("Bouton Save");
-			//this.partie.saveGameplay();
+			this.partie.saveGameplay();
 		}
 		System.exit(0);
 	}

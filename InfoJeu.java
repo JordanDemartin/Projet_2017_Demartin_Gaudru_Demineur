@@ -100,7 +100,4 @@ public class InfoJeu extends JPanel{
 		this.partie.removeWindowListener(this.observateurFen);
 	}
 
-	/*public void saveInfoJeu(DataOutputStream flux){
-
-	}*/
 }

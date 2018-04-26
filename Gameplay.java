@@ -1,5 +1,6 @@
 import java.awt.*;
 import javax.swing.*;
+import java.io.*;
 
 public class Gameplay extends JFrame{
 	private Grille jeu;
@@ -36,19 +37,22 @@ public class Gameplay extends JFrame{
 		this.setSize(tailleXjeu+tailleXinfo,tailleY);
 	}
 
-	/*public void saveGameplay(){
-	try {
+	public void saveGameplay(){
+		try {
 			FileOutputStream fichier = new FileOutputStream("save.dat");
 			DataOutputStream flux = new DataOutputStream(fichier);
-			
-			this.info.saveInfoJeu(flux);
+
 			this.jeu.saveGrille(flux);
 
 			flux.close();
-		} catch (FileNotFoundException e1) {
+		} catch (FileNotFoundException e) {
 			System.err.println("Erreur de sauvegarde");
-		} catch (IOException e2) {
+		} catch (IOException e) {
 			System.err.println("Erreur de sauvegarde");
 		}
-	}*/
+	}
+
+	public void setGameplay(DataInputStream flux){
+		jeu.setGrille(flux);
+	}
 }

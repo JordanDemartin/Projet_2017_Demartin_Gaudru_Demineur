@@ -1,6 +1,7 @@
 import java.util.Random;
 import java.awt.*;
 import javax.swing.*;
+import java.io.*;
 
 /**
  * La classe <code>Grille</code> permet de creer la grille
@@ -11,10 +12,6 @@ import javax.swing.*;
  */
 
 public class Grille extends JPanel{
-	/**
-	 * Tableau de cases qui permet de representer la grille
-	 */
-	private Case[][] cases;
 
 	/**
 	 * Nombre de bombe(s) presente(s) dans la grille
@@ -30,6 +27,11 @@ public class Grille extends JPanel{
 	 * Nombre de colonne(s) presente(s) dans la grille
 	 */
 	private int colonnes;
+
+	/**
+	 * Tableau de cases qui permet de representer la grille
+	 */
+	private Case[][] cases;
 
 	/**
 	 * Permet de communiquer avec la partie en cours
@@ -225,6 +227,10 @@ public class Grille extends JPanel{
 
 			this.info.removeActionFenetre();
 
+			File f = new File("./save.dat");
+			if(f.exists()){
+				f.delete();
+			}
 		}
 
 	}
@@ -269,6 +275,10 @@ public class Grille extends JPanel{
 				}
 			}
 		}
+		File f = new File("./save.dat");
+		if(f.exists()){
+			f.delete();
+		}
 
 	}
 
@@ -283,5 +293,59 @@ public class Grille extends JPanel{
 		}
 	}
 
+	public void saveGrille(DataOutputStream flux){
+		try {
+			flux.writeInt(this.nbBombe);
+			flux.writeInt(this.lignes);
+			flux.writeInt(this.colonnes);
+			for (int i = 0; i<this.lignes ; i++) {
+				for (int j = 0; j<this.colonnes ; j++) {
+					cases[i][j].saveCase(flux);
+				}
+			}
+		}catch(IOException e){
+			System.err.println("Erreur de sauvegarde, saveGrille");
+		}
+
+	}
+
+	public void setGrille(DataInputStream flux){
+		for (int i = 0; i<this.lignes ; i++) {
+			for (int j = 0; j<this.colonnes ; j++) {
+				cases[i][j].setCase(flux);
+			}
+		}
+		this.updateAffichage();
+	}
+
+	public void updateAffichage(){
+		int nbVoisin;
+		for (int i = 0; i<this.lignes ; i++) {
+			for (int j = 0; j<this.colonnes ; j++) {
+
+				if(cases[i][j].getState()){
+
+					cases[i][j].setBackground(new Color(255,255,255));
+
+					nbVoisin = this.bombeVoisin(i,j);
+	    			if(nbVoisin!=0){
+	    				cases[i][j].alterTexte(""+nbVoisin);
+	    			}else{
+	    				cases[i][j].alterTexte("");
+	    			}
+
+				}
+				if(cases[i][j].getFlag() == 1){
+					cases[i][j].setBackground(new Color(253,106,0));
+	    			cases[i][j].alterTexte("\u2605"); //affiche étoile
+				}else if(cases[i][j].getFlag() == 2){
+					cases[i][j].setBackground(new Color(255,255,50));
+	    			cases[i][j].alterTexte("?");
+				}
+
+			}
+		}
+		this.getEtoiles(); //update compteur de bombes
+	}
 
 }

@@ -118,6 +118,39 @@ public class Case extends JPanel{
 	}
 
 
+	public void saveCase(DataOutputStream flux){
+		try{
+			if(this.bombe){
+				flux.writeInt(1);
+			}else{
+				flux.writeInt(0);
+			}
+			if(this.ouverte){
+				flux.writeInt(1);
+			}else{
+				flux.writeInt(0);
+			}
+			flux.writeInt(this.flag);
+		}catch(IOException e){
+			System.err.println("Erreur de sauvegarde, saveCase");
+		}
+	}
 
-
+	public void setCase(DataInputStream flux){
+		try{
+			if(flux.readInt() == 1){
+				this.bombe=true;
+			}else{
+				this.bombe=false;
+			}
+			if(flux.readInt() == 1){
+				this.ouverte=true;
+			}else{
+				this.ouverte=false;
+			}
+			this.flag=flux.readInt();
+		}catch(IOException e){
+			System.err.println("Erreur de recuperation des donnees, setCase");
+		}
+	}
 }

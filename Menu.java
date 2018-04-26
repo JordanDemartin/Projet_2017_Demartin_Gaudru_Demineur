@@ -1,7 +1,116 @@
-public class Menu{
+import java.awt.*;
+import javax.swing.*;
+import java.io.*;
+
+public class Menu extends JFrame{
+	private BoutonsMenu observateur;
+	private JPanel contenu;
+	private JTextField bombesField;
+	private JTextField lignesField;
+	private JTextField colonnesField;
+
 	public Menu(){
-		//teste si présence de fichier sauvgarde
-		//appele methode fenetre
-		//blabla
+		super("Demineur par J.Demartin et R.Gaudru");
+		File f = new File("./save.dat");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLocationRelativeTo(null);
+		this.setResizable(false);
+		this.setSize(400,400);
+		this.contenu = new JPanel();
+
+		contenu.setLayout(new GridLayout(4,0,40,40));
+
+
+		JLabel nom = new JLabel("Demineur");
+		nom.setHorizontalAlignment(JLabel.CENTER);
+		nom.setVerticalAlignment(JLabel.CENTER);
+		nom.setFont(new Font(null, Font.BOLD, 25));
+		contenu.add(nom);
+
+
+		this.observateur = new BoutonsMenu(this);
+		JButton jouer = new JButton("Nouvelle partie");
+		jouer.addActionListener(this.observateur);
+		jouer.setPreferredSize(new Dimension(140,40));
+		contenu.add(jouer);
+
+		if(f.exists()){
+			JButton charger = new JButton("Charger partie");
+			charger.addActionListener(this.observateur);
+			charger.setPreferredSize(new Dimension(140,40));
+			contenu.add(charger);
+		}
+
+		JButton quitter = new JButton("Quitter");
+		quitter.addActionListener(this.observateur);
+		quitter.setPreferredSize(new Dimension(140,40));
+		contenu.add(quitter);
+
+		this.add(contenu);
+
+		this.setVisible(true);
 	}
+
+	public void menu2(){
+		this.remove(contenu);
+		this.repaint();
+
+		this.setLayout(new GridLayout(2,0));
+
+		JPanel contenu2 = new JPanel();
+
+		contenu2.setLayout(new GridLayout(3,2,40,40));
+
+		JLabel bombesLabel = new JLabel("Bombes: ");
+		bombesLabel.setFont(new Font(null, Font.BOLD, 15));
+		contenu2.add(bombesLabel);
+
+		this.bombesField = new JTextField("100");
+		contenu2.add(this.bombesField);
+
+		JLabel lignesLabel = new JLabel("Lignes: ");
+		lignesLabel.setFont(new Font(null, Font.BOLD, 15));
+		contenu2.add(lignesLabel);
+
+		this.lignesField = new JTextField("30");
+		contenu2.add(this.lignesField);
+
+		JLabel colonnesLabel = new JLabel("Colonnes: ");
+		colonnesLabel.setFont(new Font(null, Font.BOLD, 15));
+		contenu2.add(colonnesLabel);
+
+		this.colonnesField = new JTextField("30");
+		contenu2.add(this.colonnesField);
+
+		this.add(contenu2);
+
+		JButton jouer = new JButton("Jouer!");
+		jouer.addActionListener(this.observateur);
+		this.add(jouer);
+
+		this.setVisible(true);
+	}
+
+	public String getTextField(int field){
+		if(field == 0){
+			return bombesField.getText();
+		}
+		if(field == 1){
+			return lignesField.getText();
+		}
+		return colonnesField.getText();
+	}
+
+	public void setTextField(int field,String s){
+		if(field == 0){
+			bombesField.setText(s);
+		}
+		if(field == 1){
+			lignesField.setText(s);
+		}
+		if(field == 2){
+			colonnesField.setText(s);
+		}
+	}
+
 }
