@@ -33,10 +33,10 @@ public class Case extends JPanel{
 
 	public boolean tryDecouvre(){
 		if(this.ouverte==false){
-			if(this.bombe && this.flag==0){
+			if(this.bombe && this.flag!=1){
 				return true;
 			}
-			if(this.flag==0){
+			if(this.flag!=1){
 				this.ouverte=true;
 			}
 		}
@@ -97,7 +97,7 @@ public class Case extends JPanel{
 
 				if(!this.jeu.getStateCase(i,j)){
 		    		int nbVoisin;
-			    	if(!this.jeu.tryDecouvreCase(i,j) && this.jeu.getFlagCase(i,j)==0){
+			    	if(!this.jeu.tryDecouvreCase(i,j) && this.jeu.getFlagCase(i,j)!=1){
 
 			    		this.jeu.setBackgroundCase(i,j,new Color(255,255,255));
 			    		nbVoisin=this.jeu.bombeVoisin(i,j);

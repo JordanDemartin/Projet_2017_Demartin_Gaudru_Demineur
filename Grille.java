@@ -121,11 +121,14 @@ public class Grille extends JPanel{
 			}
 		}
 
-		if(nbOuvertes+this.nbBombe == this.lignes*this.colonnes){ //bloque la partie une fois celle-ci terminer
+		if(nbOuvertes+this.nbBombe == this.lignes*this.colonnes){
+			this.info.setButtonToQuit();
 
 			this.desactiveCliqueCase();
 
-			System.out.println("victoire");
+			this.info.updateCounter(-1);
+
+			this.info.removeActionFenetre();
 
 		}
 
@@ -133,19 +136,26 @@ public class Grille extends JPanel{
 
 	public void defaite(int x,int y){
 
-		this.info.updateCounter(this.nbBombe);
+		
+		this.info.setButtonToQuit();
+
+		this.desactiveCliqueCase();
+
+		this.info.updateCounter(-2);
+
+		this.info.removeActionFenetre();
 
 		for (int i = 0; i<this.lignes ; i++) {
 			for (int j = 0; j<this.colonnes ; j++) {
 				if(cases[i][j].getBombe()){
-					if(cases[i][j].getFlag() == 0 || cases[i][j].getFlag() == 2){
+					if(cases[i][j].getFlag() !=1){
 						cases[i][j].setBackground(new Color(255,0,0));
 					}
 					if(i==x && j==y){
 						cases[i][j].setBackground(new Color(220,20,60));
 						cases[i][j].alterTexte("X");
 					}
-				}else{
+				}else if(!cases[i][j].getState()){			//ajout ici
 					cases[i][j].setBackground(new Color(120,120,120));
 
 					if(cases[i][j].getFlag() == 1){
@@ -161,13 +171,10 @@ public class Grille extends JPanel{
 				}
 			}
 		}
-		this.desactiveCliqueCase();
-
-		System.out.println("Defaite");
 
 	}
 
-	public void desactiveCliqueCase(){
+	public void desactiveCliqueCase(){	//bloque la partie une fois celle-ci terminer
 		for (int i = 0; i<this.lignes ; i++) {
 			for (int j = 0; j<this.colonnes ; j++) {
 				cases[i][j].removeMouseListener( cases[i][j].getObservateur() );

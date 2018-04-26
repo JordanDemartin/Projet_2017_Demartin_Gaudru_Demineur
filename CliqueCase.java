@@ -30,7 +30,7 @@ public class CliqueCase implements MouseListener {
     		int nbVoisin;
 	    	if(e.getButton() == MouseEvent.BUTTON1){
 	    		boolean sortieTryDecouvre = this.bloc.tryDecouvre();
-	    		if(!sortieTryDecouvre && this.bloc.getFlag()==0){
+	    		if(!sortieTryDecouvre && this.bloc.getFlag()!=1){
 	    			this.bloc.setBackground(new Color(255,255,255));
 	    			nbVoisin=this.jeu.bombeVoisin(this.x,this.y);
 	    			if(nbVoisin!=0){
