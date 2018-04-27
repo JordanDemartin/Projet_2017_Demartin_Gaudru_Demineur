@@ -78,18 +78,18 @@ public class InfoJeu extends JPanel{
 	public void updateCounter(int nbEtoiles){
 		this.counter.setText("Bombes: "+(this.nbBombe-nbEtoiles) );
 		if(nbEtoiles==-1){
-			this.counter.setText("  Victoire!  ");
+			this.counter.setText("    Victoire!    ");
 		}else if(nbEtoiles==-2){
-			this.counter.setText("  Defaite...  ");
+			this.counter.setText("    Defaite...    ");
 		}
 	}
 
 	/**
      * Change le contenu du JButton "quit"
-	 * en "Quitter" en cas de vitoire ou défaite
+	 * en "Menu" en cas de vitoire ou défaite
      */
-	public void setButtonToQuit(){
-		this.quit.setText("Quitter");
+	public void setButtonToMenu(){
+		this.quit.setText("Menu");
 	}
 
 	/**

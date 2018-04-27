@@ -35,8 +35,14 @@ public class BoutonInfoJeu implements ActionListener{
 		String contenu = e.getActionCommand();
 		if ( contenu.equals("Sauvgarder et Quitter") ){
 			this.partie.saveGameplay();
+			this.partie.dispose();
+			Menu menu = new Menu();
 		}
-		System.exit(0);
+		if ( contenu.equals("Menu") ){
+			this.partie.dispose();
+			Menu menu = new Menu();
+		}
+		
 	}
 
 

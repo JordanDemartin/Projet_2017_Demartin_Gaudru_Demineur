@@ -219,7 +219,7 @@ public class Grille extends JPanel{
 		}
 
 		if(nbOuvertes+this.nbBombe == this.lignes*this.colonnes){
-			this.info.setButtonToQuit();
+			this.info.setButtonToMenu();
 
 			this.desactiveCliqueCase();
 
@@ -241,7 +241,7 @@ public class Grille extends JPanel{
 	public void defaite(int x,int y){
 
 
-		this.info.setButtonToQuit();
+		this.info.setButtonToMenu();
 
 		this.desactiveCliqueCase();
 
