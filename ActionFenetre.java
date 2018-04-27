@@ -1,7 +1,4 @@
-import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
-import java.io.*;
 
 /**
  * La classe <code>ActionFenetre</code> sert a déclencher la sauvgarde en cas de fermeture de la fenetre

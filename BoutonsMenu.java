@@ -1,30 +1,39 @@
-import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
 /**
- * La classe <code>BoutonInfoJeu</code> sert a realiser l'action du bouton dans la classe InfoJeu.
+ * La classe <code>BoutonMenu</code> sert a realiser l'action des bouton dans la classe <code>Menu</code>.
  *  
  * @version 0.1
  * @author Remy G. et Jordan D.
  */
 
 public class BoutonsMenu implements ActionListener{
+
+	/**
+    * Permet de communiquer avec le menu
+    */
 	private Menu menu;
 
+	/**
+    * Constructeur permetant de transmettre la classe du menu
+    * 
+    * @param le menu
+    */
 	public BoutonsMenu(Menu menu){
 		super();
 		this.menu=menu;
 	}
 
-	public void actionPerformed(ActionEvent e){
-		String contenu = e.getActionCommand();
+	/**
+    * L'action qui s'effectue quand on presse les JButtons dans le menu
+    * 
+    * @param evenement
+    */
+	public void actionPerformed(ActionEvent evenement){
+		String contenu = evenement.getActionCommand();
 		if ( contenu.equals("Nouvelle partie") ){
-			//this.menu.dispose();
 			menu.menu2();
-			//Gameplay partie = new Gameplay(30,30,30);
-			//partie.setVisible(true);
 		}
 		if ( contenu.equals("Charger partie") ){
 
@@ -62,7 +71,11 @@ public class BoutonsMenu implements ActionListener{
 				try{
 					in[i] = Integer.parseInt(entree);
 				}catch(IllegalArgumentException er){
-					menu.setTextField(i,"4");
+					if(i==0){
+						menu.setTextField(0,"0");
+					}else{
+						menu.setTextField(i,"4");
+					}
 					error=true;
 				}
 			}

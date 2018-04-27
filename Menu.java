@@ -2,13 +2,43 @@ import java.awt.*;
 import javax.swing.*;
 import java.io.*;
 
+/**
+ * La classe <code>Menu</code> est une fenetre dans laquelle on fait apparaitre le texte "Demineur" et 2 ou 3 boutons selon si une sauvegarde existe
+ * et dans un second temps, la séléction du nombre de bombes, lignes et colonnes si une nouvelle partie est desirer par l'utilisateur.
+ *
+ * @version 0.1
+ * @author Remy G. et Jordan D.
+ */
+
 public class Menu extends JFrame{
+	/**
+	 * observateur qui permet d'executer ceraine action dans le cas ou un bouton est presser
+	 */
 	private BoutonsMenu observateur;
+
+	/**
+	 * Un JPanel qui permet d'afficher de façon organiser le contenu de la fenetre
+	 */
 	private JPanel contenu;
+
+	/**
+	 * Un espace ou l'utilisateur rentre le nombre de bombes qu'il souhaite
+	 */
 	private JTextField bombesField;
+	
+	/**
+	 * Un espace ou l'utilisateur rentre le nombre de lignes qu'il souhaite
+	 */
 	private JTextField lignesField;
+	
+	/**
+	 * Un espace ou l'utilisateur rentre le nombre de colonnes qu'il souhaite
+	 */
 	private JTextField colonnesField;
 
+	/**
+	 * un constructeur qui met en place le premier menu et qui décide d'afficher oui ou non le bouton "Charger Partie"
+	 */
 	public Menu(){
 		super("Demineur par J.Demartin et R.Gaudru");
 		File f = new File("./save.dat");
@@ -51,6 +81,9 @@ public class Menu extends JFrame{
 		this.setVisible(true);
 	}
 
+	/**
+	 * une methode  qui met en place le second menu appeler par BoutonsMenu si l'utilisateur presse le bouton Nouvelle Partie dans le premier menu
+	 */
 	public void menu2(){
 		this.remove(contenu);
 		this.repaint();
@@ -91,6 +124,11 @@ public class Menu extends JFrame{
 		this.setVisible(true);
 	}
 
+	/**
+	 * une methode qui permet de recuperer le contenu d'un champ du menu 2
+	 * @param int field, le numero du champ dont on souhaite obtenir le contenu
+	 * @return String, le contenu du champ desirer
+	 */
 	public String getTextField(int field){
 		if(field == 0){
 			return bombesField.getText();
@@ -101,6 +139,12 @@ public class Menu extends JFrame{
 		return colonnesField.getText();
 	}
 
+	/**
+	 * une methode qui permet de modifier le contenu d'un champ du menu 2
+	 *
+	 * @param int field, le numero du champ dont on souhaite modifier le contenu
+	 * @param String s, le contenu que l'on souhaite inserer dans le champ
+	 */
 	public void setTextField(int field,String s){
 		if(field == 0){
 			bombesField.setText(s);
