@@ -293,18 +293,27 @@ public class Grille extends JPanel{
 		}
 	}
 
-	public void saveGrille(DataOutputStream flux){
+	public void saveGrille(){
+
 		try {
+			FileOutputStream fichier = new FileOutputStream("save.dat");
+			DataOutputStream flux = new DataOutputStream(fichier);
+
 			flux.writeInt(this.nbBombe);
 			flux.writeInt(this.lignes);
 			flux.writeInt(this.colonnes);
+
 			for (int i = 0; i<this.lignes ; i++) {
 				for (int j = 0; j<this.colonnes ; j++) {
 					cases[i][j].saveCase(flux);
 				}
 			}
-		}catch(IOException e){
-			System.err.println("Erreur de sauvegarde, saveGrille");
+
+			flux.close();
+		} catch (FileNotFoundException e) {
+			System.err.println("Erreur de sauvegarde");
+		} catch (IOException e) {
+			System.err.println("Erreur de sauvegarde");
 		}
 
 	}

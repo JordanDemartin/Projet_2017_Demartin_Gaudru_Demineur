@@ -2,10 +2,32 @@ import java.awt.*;
 import javax.swing.*;
 import java.io.*;
 
+/**
+ * La classe <code>Gameplay</code> est la fenetre dans laquelle va se jouer la partie.
+ *
+ * @version 0.1
+ * @author Remy G. et Jordan D.
+ */
+
 public class Gameplay extends JFrame{
+
+	/**
+    * Le JPanel contenant la grille de jeu
+    */
 	private Grille jeu;
+
+	/**
+    * Le JPanel contenant les informations sur la partie
+    */
 	private InfoJeu info;
 
+	/**
+	 * Constructeur destine a preparer les proprietes de la fenetre <code>Gameplay</code> ainsi que les proprietes des JPanel <code>Grille</code> et <code>InfoJeu</code>
+	 *
+	 * @param nbBombe (nombre de bombe(s) choisie(s) dans le menu)
+	 * @param lignes (nombre de ligne(s) choisie(s) dans le menu)
+	 * @param colonnes (nombre de colonnes(s) choisie(s) dans le menu)
+	 */
 	public Gameplay(int nbBombe, int lignes,int colonnes){
 		super("Demineur par J.Demartin et R.Gaudru");
 		
@@ -37,22 +59,19 @@ public class Gameplay extends JFrame{
 		this.setSize(tailleXjeu+tailleXinfo,tailleY);
 	}
 
+	/**
+	 * La methode qui permet de demander la sauvgarde de la partie
+	 *
+	 */
 	public void saveGameplay(){
-		try {
-			FileOutputStream fichier = new FileOutputStream("save.dat");
-			DataOutputStream flux = new DataOutputStream(fichier);
-
-			this.jeu.saveGrille(flux);
-
-			flux.close();
-		} catch (FileNotFoundException e) {
-			System.err.println("Erreur de sauvegarde");
-		} catch (IOException e) {
-			System.err.println("Erreur de sauvegarde");
-		}
+		this.jeu.saveGrille();
 	}
 
+	/**
+	 * La methode qui permet de demander le chargement de la sauvgarde de la partie
+	 *
+	 */
 	public void setGameplay(DataInputStream flux){
-		jeu.setGrille(flux);
+		this.jeu.setGrille(flux);
 	}
 }
