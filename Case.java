@@ -2,6 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 
+
+/**
+ * La classe <code>Case</code> sert recuperer toutes les informations necessaires sur une case.
+ *  
+ * @version 0.1
+ * @author Remy G. et Jordan D.
+ */
 public class Case extends JPanel{
 	private boolean bombe;
 	private boolean ouverte;
@@ -10,6 +17,13 @@ public class Case extends JPanel{
 	private Grille jeu;
 	private CliqueCase observateur;
 
+	/**
+    * Constructeur permetant de creer une case avec toutes ses caracteristiques par defaut
+    * 
+    * @param int i (indice i tu tableau)
+    * @param int j (indice j tu tableau)
+    * @param grille
+    */
 	public Case(int i,int j,Grille jeu){
 		super();
 		this.bombe=false;
@@ -23,14 +37,24 @@ public class Case extends JPanel{
 		this.addMouseListener(this.observateur);
 	}
 
+	/**
+	 * une methode qui permet de changer le contenu de l'attribut bombe
+	 */
 	public void setBombe(){
 		this.bombe=true;
 	}
 
+	/**
+	 * une methode qui permet de recuperer le de l'attribut bombe
+	 */
 	public boolean getBombe(){
 		return this.bombe;
 	}
 
+	/**
+	 * une methode qui permet de verifier si une case peut etre retourner
+	 * @return boolean
+	 */
 	public boolean tryDecouvre(){
 		if(this.ouverte==false){
 			if(this.bombe && this.flag!=1){
@@ -43,28 +67,49 @@ public class Case extends JPanel{
 		return false;
 	}
 
+	/**
+	 * une methode qui permet de changer le flag d'une bombe
+	 */
 	public void nextFlag(){
 		this.flag++;
 		if(this.flag==3)
 			this.flag=0;
 	}
 
+	/**
+	 * une methode qui permet de recuperer le contenu de l'attribut flag
+	 */
 	public int getFlag(){
 		return this.flag;
 	}
 
+	/**
+	 * une methode qui permet de recuperer l'etat d'une bombe (ouverte ou non)
+	 */
 	public boolean getState(){
 		return this.ouverte;
 	}
 
+	/**
+	 * une methode qui permet de recuperer l'observateur de la bombe
+	 */
 	public CliqueCase getObservateur(){
 		return this.observateur;
 	}
 
+	/**
+	 * une methode qui permet de changer le texte d'une bombe (nb voisin)
+	 * @param String (texte a affficher)
+	 */
 	public void alterTexte(String s){
 		this.texte.setText(s);
 	}
 
+	/**
+	 * une methode qui permet de decouvrir les voisin d'une case s'ils n'ont pas de bombe et ceci recursivement
+	 * @param int x (indice i de la case)
+	 * @param int y (indice j de la case)
+	 */
 	public void decouvreVoisin(int x,int y){
 		
 
@@ -117,7 +162,10 @@ public class Case extends JPanel{
 
 	}
 
-
+	/**
+	 * une methode qui permet d'ecrire dans un fichier les donnees de la case 
+	 * @param flux du DataOutputStream
+	 */
 	public void saveCase(DataOutputStream flux){
 		try{
 			flux.writeBoolean(this.bombe);
@@ -128,6 +176,10 @@ public class Case extends JPanel{
 		}
 	}
 
+	/**
+	 * une methode qui permet de lire dans le fichier l'etat d'une case pour la restituer
+	 * @param flux du DataInputStream
+	 */
 	public void setCase(DataInputStream flux){
 		try{
 			this.bombe = flux.readBoolean();
