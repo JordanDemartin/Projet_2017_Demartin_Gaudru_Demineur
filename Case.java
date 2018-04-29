@@ -38,21 +38,21 @@ public class Case extends JPanel{
 	}
 
 	/**
-	 * une methode qui permet de changer le contenu de l'attribut bombe
+	 * une methode qui permet de declarer que la case contient une bombe
 	 */
 	public void setBombe(){
 		this.bombe=true;
 	}
 
 	/**
-	 * une methode qui permet de recuperer le de l'attribut bombe
+	 * une methode qui permet de recuperer la valeur de l'attribut bombe
 	 */
 	public boolean getBombe(){
 		return this.bombe;
 	}
 
 	/**
-	 * une methode qui permet de verifier si une case peut etre retourner
+	 * une methode qui permet de verifier si une case peut etre retourner et au passage de renvoyer, si la case est retourner, true si on decouvre une bombe
 	 * @return boolean
 	 */
 	public boolean tryDecouvre(){
@@ -68,7 +68,7 @@ public class Case extends JPanel{
 	}
 
 	/**
-	 * une methode qui permet de changer le flag d'une bombe
+	 * une methode qui permet de changer le flag d'une case
 	 */
 	public void nextFlag(){
 		this.flag++;
@@ -84,21 +84,21 @@ public class Case extends JPanel{
 	}
 
 	/**
-	 * une methode qui permet de recuperer l'etat d'une bombe (ouverte ou non)
+	 * une methode qui permet de recuperer l'etat d'une case (ouverte ou non)
 	 */
 	public boolean getState(){
 		return this.ouverte;
 	}
 
 	/**
-	 * une methode qui permet de recuperer l'observateur de la bombe
+	 * une methode qui permet de recuperer l'observateur de la case
 	 */
 	public CliqueCase getObservateur(){
 		return this.observateur;
 	}
 
 	/**
-	 * une methode qui permet de changer le texte d'une bombe (nb voisin)
+	 * une methode qui permet de changer le texte d'une case (nb voisin)
 	 * @param String (texte a affficher)
 	 */
 	public void alterTexte(String s){
