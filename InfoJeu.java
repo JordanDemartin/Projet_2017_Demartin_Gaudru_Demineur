@@ -1,3 +1,6 @@
+import javax.swing.*;
+import java.awt.*;
+
 /**
  * La classe <code>InfoJeu</code> est utilise pour donner les informations de
  * la partie en cours au joueur
@@ -5,9 +8,6 @@
  * @version 1.0
  * @author Remy G. et Jordan D.
  */
-
-import javax.swing.*;
-import java.awt.*;
 
 public class InfoJeu extends JPanel{
 
