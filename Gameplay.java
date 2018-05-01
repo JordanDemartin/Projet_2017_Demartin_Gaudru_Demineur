@@ -5,7 +5,7 @@ import java.io.*;
 /**
  * La classe <code>Gameplay</code> est la fenetre dans laquelle va se jouer la partie.
  *
- * @version 0.1
+ * @version 1.0
  * @author Remy G. et Jordan D.
  */
 
@@ -22,11 +22,11 @@ public class Gameplay extends JFrame{
 	private InfoJeu info;
 
 	/**
-	 * Constructeur destine a preparer les proprietes de la fenetre <code>Gameplay</code> ainsi que les proprietes des JPanel <code>Grille</code> et <code>InfoJeu</code>
+	 * Constructeur destine a preparer les proprietes de la fenetre <code>Gameplay</code> ainsi que les proprietes des <code>JPanel</code> <code>Grille</code> et <code>InfoJeu</code>
 	 *
-	 * @param nbBombe (nombre de bombe(s) choisie(s) dans le menu)
-	 * @param lignes (nombre de ligne(s) choisie(s) dans le menu)
-	 * @param colonnes (nombre de colonnes(s) choisie(s) dans le menu)
+	 * @param nbBombe nombre de bombe(s) choisie(s) dans le menu
+	 * @param lignes nombre de ligne(s) choisie(s) dans le menu
+	 * @param colonnes nombre de colonnes(s) choisie(s) dans le menu
 	 */
 	public Gameplay(int nbBombe, int lignes,int colonnes){
 		super("Demineur par J.Demartin et R.Gaudru");
@@ -68,8 +68,9 @@ public class Gameplay extends JFrame{
 	}
 
 	/**
-	 * La methode qui permet de demander le chargement de la sauvgarde de la partie
+	 * La methode qui permet de demander de continuer le chargement de la sauvgarde de la partie
 	 *
+	 * @param flux Le flux permettant de lire dans le fichier de sauvgarde
 	 */
 	public void setGameplay(DataInputStream flux){
 		this.jeu.setGrille(flux);

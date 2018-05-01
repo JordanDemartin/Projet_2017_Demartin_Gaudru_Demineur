@@ -7,7 +7,7 @@ import java.io.*;
  * La classe <code>Grille</code> permet de creer la grille
  * et de connaitre toutes les informations necessaire au bon deroulement d'une partie
  *
- * @version 0.1
+ * @version 1.0
  * @author Remy G. et Jordan D.
  */
 
@@ -46,10 +46,10 @@ public class Grille extends JPanel{
 	/**
 	 * Constructeur destine a creer la grille
 	 *
-	 * @param nbBombe (nombre de bombe(s) choisie(s) dans le menu)
-	 * @param lignes (nombre de ligne(s) choisie(s) dans le menu)
-	 * @param colonnes (nombre de colonnes(s) choisie(s) dans le menu)
-	 * @param info (InfoJeu pour faire communiquer les informations entre <code>Grille</code> & <code>InfoJeu</code>)
+	 * @param nbBombe nombre de bombe(s) choisie(s) dans le menu
+	 * @param lignes nombre de ligne(s) choisie(s) dans le menu
+	 * @param colonnes nombre de colonnes(s) choisie(s) dans le menu
+	 * @param info La classe <code>InfoJeu</code> contenue dans le meme <code>Gameplay</code> que cette classe <code>Grille</code>
 	 */
 	public Grille(int nbBombe, int lignes,int colonnes,InfoJeu info){
 		super();
@@ -84,9 +84,9 @@ public class Grille extends JPanel{
 
 	/**
      * Permet de compter le nombre de bombe(s) qu'il y a autour d'une case
-	 * @param x (indice x dans le Tableau de cases)
-	 * @param y (indice y dans le Tableau de cases)
-	 * @return nbVoisin (nombre de bombe(s) voisine(s))
+	 * @param x indice x dans le Tableau de cases
+	 * @param y indice y dans le Tableau de cases
+	 * @return nombre de bombe(s) voisine(s) a la case de coordonnees x et y
      */
 	public int bombeVoisin(int x,int y){
 		int nbVoisin=0;
@@ -120,76 +120,76 @@ public class Grille extends JPanel{
 	}
 
 	/**
-     * Getter pour recuperer le nombre de ligne(s)
-	 * @return lignes (nombre de ligne(s))
+     * Methode pour recuperer le nombre de ligne(s)
+	 * @return nombre de ligne(s)
      */
 	public int getLignes(){
 		return this.lignes;
 	}
 
 	/**
-     * Getter pour recuperer le nombre de colonne(s)
-	 * @return colonnes (nombre de colonne(s))
+     * Methode pour recuperer le nombre de colonne(s)
+	 * @return nombre de colonne(s)
      */
 	public int getColonnes(){
 		return this.colonnes;
 	}
 
 	/**
-	 * Essaie d'ouvrir/retourner une case
-	 * renvoie 'true' si
-	 * renvoie 'false' si
-	 * @param x (indice x dans le Tableau de cases)
-	 * @param y (indice y dans le Tableau de cases)
-	 * @return cases[x][y] (true ou false d'une case))
+	 * Essaie d'ouvrir/retourner cases[x][y]
+	 *  
+	 * @param x indice x dans le Tableau de cases
+	 * @param y indice y dans le Tableau de cases
+	 * @return renvoie 'true' si cases[x][y] est decouverte et contenait une bombe sinon elle renvoie 'false'
      */
 	public boolean tryDecouvreCase(int x, int y){
 		return cases[x][y].tryDecouvre();
 	}
 
 	/**
-     * Getter pour recuperer le flag d'une case Etoile/?/Rien
-	 * @param x (indice x dans le Tableau de cases)
-	 * @param y (indice y dans le Tableau de cases)
-	 * @return flg de la cases[x][y] (Etoile/?/Rien)
+     * Methode pour recuperer le flag d'une case, Etoile/?/Rien
+	 * @param x indice x dans le Tableau de cases
+	 * @param y(indice y dans le Tableau de cases
+	 * @return flag de la cases[x][y] (Etoile/?/Rien)
      */
 	public int getFlagCase(int x, int y){
 		return cases[x][y].getFlag();
 	}
 
 	/**
-     * Setter pour changer la couleur de fond d'une case
-	 * @param x (indice x dans le Tableau de cases)
-	 * @param y (indice y dans le Tableau de cases)
+     * Methode pour changer la couleur de fond de la cases[x][y]
+	 * @param x indice x dans le Tableau de cases
+	 * @param y indice y dans le Tableau de cases
+	 * @param c Couleur que l'on veut pour la cases[x][y]
      */
 	public void setBackgroundCase(int x, int y,Color c){
 		cases[x][y].setBackground(c);
 	}
 
 	/**
-     * Setter pour changer le texte d'une case (=Nombre de bombe(s) voisine(s))
-	 * @param x (indice x dans le Tableau de cases)
-	 * @param y (indice y dans le Tableau de cases)
+     * Methode pour changer la texte/contenu de la cases[x][y]
+	 * @param x indice x dans le Tableau de cases
+	 * @param y indice y dans le Tableau de cases
+	 * @param s chaine de caracteres que l'on veut mettre dans la cases[x][y]
      */
 	public void setTextCase(int x, int y,String s){
 		cases[x][y].alterTexte(s);
 	}
 
 	/**
-     * Getter pour recuperer l'etat d'une case (ouverte ou non)
-     * Renvoie 'false' si la case n'est pas encore ouverte
-	 * Renvoie 'true' si la case est deja retournee
-	 * @param x (indice x dans le Tableau de cases)
-	 * @param y (indice y dans le Tableau de cases)
-	 * @return etat de la cases[x][y] (ouverte ou non)
+     * Methode pour recuperer l'etat d'une case (ouverte ou non)
+     * 
+	 * @param x indice x dans le Tableau de cases
+	 * @param y indice y dans le Tableau de cases
+	 * @return Renvoie 'false' si la cases[x][y] n'est pas encore ouverte et renvoie 'true' dans le cas contraire
      */
 	public boolean getStateCase(int x, int y){
 		return cases[x][y].getState();
 	}
 
 	/**
-     * Getter pour recuperer le nombre d'etoile(s) dans la grille
-	 * Et change le texte dans le compteur de <code>InfoJeu</code>
+     * Methode pour recuperer le nombre d'etoile(s) dans la grille
+	 * Et demande la mise a jour du texte dans le compteur de <code>InfoJeu</code> en consequence
      */
 	public void getEtoiles(){
 		int nbEtoiles=0;
@@ -206,7 +206,7 @@ public class Grille extends JPanel{
 	/**
      * Permet de tester la victoire en comptant le nombre de case(s) ouvertes
 	 * Si il y a victoire, on ne peut plus cliquer sur la grille
-	 * et le bouton 'sauvegarder et quitter' devient 'quitter'
+	 * et le bouton 'sauvegarder et quitter' devient 'menu'
      */
 	public void testVictoire(){
 		int nbOuvertes=0;
@@ -236,7 +236,12 @@ public class Grille extends JPanel{
 	}
 
 	/**
-     * Permet de tester la defaite
+     * Met en place un l'etat visuel de la defaite
+	 * Si il y a victoire, on ne peut plus cliquer sur la grille
+	 * et le bouton 'sauvegarder et quitter' devient 'menu'
+	 *
+	 * @param x indice x dans le Tableau de cases de la case ou une bombe a ete cliquee
+	 * @param y indice y dans le Tableau de cases de la case ou une bombe a ete cliquee
      */
 	public void defaite(int x,int y){
 
@@ -283,7 +288,7 @@ public class Grille extends JPanel{
 	}
 
 	/**
-     * Permet de desactiver le clique sur la grille
+     * Permet de desactiver le clique sur la grille, methode utilisee pour bloquer la partie en cas de victoire / defaite
      */
 	public void desactiveCliqueCase(){	//bloque la partie une fois celle-ci terminer
 		for (int i = 0; i<this.lignes ; i++) {
@@ -293,6 +298,10 @@ public class Grille extends JPanel{
 		}
 	}
 
+	/**
+     * La methode qui realise la sauvgarde, elle ouvre le fichier de sauvgarde en ecriture et ecrit
+     * 3 infos cruciales a sauvgarder dans celui-ci avant de dire a chaque case de se sauvgarder dans un certain ordre
+     */
 	public void saveGrille(){
 
 		try {
@@ -318,6 +327,12 @@ public class Grille extends JPanel{
 
 	}
 
+	/**
+     * La methode qui dit a chaque case de se remettre a l'etat qui correspond a la sauvgarde
+     * avant d'appeler la methode updateAffichage.
+	 *
+     * @param flux flux d'ecriture vers le fichier de sauvgarde
+     */
 	public void setGrille(DataInputStream flux){
 		for (int i = 0; i<this.lignes ; i++) {
 			for (int j = 0; j<this.colonnes ; j++) {
@@ -327,6 +342,11 @@ public class Grille extends JPanel{
 		this.updateAffichage();
 	}
 
+	/**
+     * cette methode fait en sorte que l'etat reel d'une case et son etat visuel correspondent,
+     * elle est utiliser uniquement lors de la restauration de la sauvgarde car c'est le seul moment ou ces deux etats ne
+     * seront plus en accord
+     */
 	public void updateAffichage(){
 		int nbVoisin;
 		for (int i = 0; i<this.lignes ; i++) {

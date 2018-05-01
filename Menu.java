@@ -4,9 +4,9 @@ import java.io.*;
 
 /**
  * La classe <code>Menu</code> est une fenetre dans laquelle on fait apparaitre le texte "Demineur" et 2 ou 3 boutons selon si une sauvegarde existe
- * et dans un second temps, la séléction du nombre de bombes, lignes et colonnes si une nouvelle partie est desirer par l'utilisateur.
+ * et dans un second temps, la selection du nombre de bombes, lignes et colonnes si une nouvelle partie est desirer par l'utilisateur.
  *
- * @version 0.1
+ * @version 1.0
  * @author Remy G. et Jordan D.
  */
 
@@ -37,7 +37,7 @@ public class Menu extends JFrame{
 	private JTextField colonnesField;
 
 	/**
-	 * un constructeur qui met en place le premier menu et qui décide d'afficher oui ou non le bouton "Charger Partie"
+	 * un constructeur qui met en place le premier menu et qui decide d'afficher oui ou non le bouton "Charger Partie"
 	 */
 	public Menu(){
 		super("Demineur par J.Demartin et R.Gaudru");
@@ -126,8 +126,8 @@ public class Menu extends JFrame{
 
 	/**
 	 * une methode qui permet de recuperer le contenu d'un champ du menu 2
-	 * @param int field, le numero du champ dont on souhaite obtenir le contenu
-	 * @return String, le contenu du champ desirer
+	 * @param field le numero du champ dont on souhaite obtenir le contenu
+	 * @return le contenu du champ numero 'field'
 	 */
 	public String getTextField(int field){
 		if(field == 0){
@@ -142,8 +142,8 @@ public class Menu extends JFrame{
 	/**
 	 * une methode qui permet de modifier le contenu d'un champ du menu 2
 	 *
-	 * @param int field, le numero du champ dont on souhaite modifier le contenu
-	 * @param String s, le contenu que l'on souhaite inserer dans le champ
+	 * @param field le numero du champ dont on souhaite modifier le contenu
+	 * @param s le contenu que l'on souhaite inserer dans le champ numero 'field'
 	 */
 	public void setTextField(int field,String s){
 		if(field == 0){

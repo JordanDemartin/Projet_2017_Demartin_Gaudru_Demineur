@@ -4,25 +4,51 @@ import java.io.*;
 
 
 /**
- * La classe <code>Case</code> sert recuperer toutes les informations necessaires sur une case.
+ * La classe <code>Case</code> est un JPanel contenant des infos necessaires pour la case qu'il est.
  *  
- * @version 0.1
+ * @version 1.0
  * @author Remy G. et Jordan D.
  */
 public class Case extends JPanel{
+	/**
+	 * boolean determinant si une case contient une bombe ou non:
+	 * true: bombe, false: pas de bombe
+	 */
 	private boolean bombe;
+
+	/**
+	 * boolean determinant si une case est ouverte:
+	 * true: ouverte, false: fermee
+	 */
 	private boolean ouverte;
+
+	/**
+	 * JLabel permettant de contenir du texte dans la case, soit pour dire le nb de bombes voisines,
+	 * soit pour afficher le flag de la case, soit en cas de defaite pour montrer quelle bombe a exploser
+	 */
 	private JLabel texte;
+
+	/**
+	 * int permettant de savoir le flag afficher sur la case, 0: rien, 1: etoile et 2: ?
+	 */
 	private int flag;
+
+	/**
+	 * Permet de communiquer avec la grille
+	 */
 	private Grille jeu;
+
+	/**
+	 * observateur detectant si l'utilisateur clique sur la case (clique gauche ou droit)
+	 */
 	private CliqueCase observateur;
 
 	/**
     * Constructeur permetant de creer une case avec toutes ses caracteristiques par defaut
     * 
-    * @param int i (indice i tu tableau)
-    * @param int j (indice j tu tableau)
-    * @param grille
+    * @param i indice i de la <code>Case</code>
+    * @param j indice j de la <code>Case</code>
+    * @param jeu la grille representant le jeu en cours
     */
 	public Case(int i,int j,Grille jeu){
 		super();
@@ -46,6 +72,8 @@ public class Case extends JPanel{
 
 	/**
 	 * une methode qui permet de recuperer la valeur de l'attribut bombe
+	 *
+	 * @return la valeur de l'attribut bombe
 	 */
 	public boolean getBombe(){
 		return this.bombe;
@@ -53,7 +81,7 @@ public class Case extends JPanel{
 
 	/**
 	 * une methode qui permet de verifier si une case peut etre retourner et au passage de renvoyer, si la case est retourner, true si on decouvre une bombe
-	 * @return boolean
+	 * @return renvoie 'true' si la case est decouverte et contenait une bombe sinon elle renvoie 'false'
 	 */
 	public boolean tryDecouvre(){
 		if(this.ouverte==false){
@@ -78,6 +106,8 @@ public class Case extends JPanel{
 
 	/**
 	 * une methode qui permet de recuperer le contenu de l'attribut flag
+	 *
+	 * @return le flag de la case
 	 */
 	public int getFlag(){
 		return this.flag;
@@ -85,6 +115,8 @@ public class Case extends JPanel{
 
 	/**
 	 * une methode qui permet de recuperer l'etat d'une case (ouverte ou non)
+	 *
+	 * @return l'etat de la case, true: ouverte, false: fermee
 	 */
 	public boolean getState(){
 		return this.ouverte;
@@ -92,14 +124,16 @@ public class Case extends JPanel{
 
 	/**
 	 * une methode qui permet de recuperer l'observateur de la case
+	 *
+	 * @return l'observateur de la case
 	 */
 	public CliqueCase getObservateur(){
 		return this.observateur;
 	}
 
 	/**
-	 * une methode qui permet de changer le texte d'une case (nb voisin)
-	 * @param String (texte a affficher)
+	 * une methode qui permet de changer le texte d'une case
+	 * @param s texte a affficher
 	 */
 	public void alterTexte(String s){
 		this.texte.setText(s);
@@ -107,8 +141,8 @@ public class Case extends JPanel{
 
 	/**
 	 * une methode qui permet de decouvrir les voisin d'une case s'ils n'ont pas de bombe et ceci recursivement
-	 * @param int x (indice i de la case)
-	 * @param int y (indice j de la case)
+	 * @param x indice x de la case dont on doit decouvrir les voisins
+	 * @param y indice y de la case dont on doit decouvrir les voisins
 	 */
 	public void decouvreVoisin(int x,int y){
 		

@@ -2,23 +2,23 @@ import java.awt.event.*;
 import java.io.*;
 
 /**
- * La classe <code>BoutonMenu</code> sert a realiser l'action des bouton dans la classe <code>Menu</code>.
+ * La classe <code>BoutonMenu</code> sert a realiser l'action des boutons dans la classe <code>Menu</code>.
  *  
- * @version 0.1
+ * @version 1.0
  * @author Remy G. et Jordan D.
  */
 
 public class BoutonsMenu implements ActionListener{
 
 	/**
-    * Permet de communiquer avec le menu
+    * Permet de communiquer avec le <code>Menu</code>
     */
 	private Menu menu;
 
 	/**
     * Constructeur permetant de transmettre la classe du menu
     * 
-    * @param le menu
+    * @param menu Le <code>Menu</code> surveiller par cet observateur
     */
 	public BoutonsMenu(Menu menu){
 		super();
@@ -26,9 +26,9 @@ public class BoutonsMenu implements ActionListener{
 	}
 
 	/**
-    * L'action qui s'effectue quand on presse les JButtons dans le menu
+    * L'action qui s'effectue quand on presse les <code>JButton</code> dans le <code>Menu</code>
     * 
-    * @param evenement
+    * @param evenement la variable contenant les circonstances de l'appel de la methode
     */
 	public void actionPerformed(ActionEvent evenement){
 		String contenu = evenement.getActionCommand();

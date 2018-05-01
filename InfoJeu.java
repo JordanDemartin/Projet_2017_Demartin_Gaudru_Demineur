@@ -1,8 +1,8 @@
 /**
- * La classe <code>InfoJeu</code> est utilisé pour donner les informations de
+ * La classe <code>InfoJeu</code> est utilise pour donner les informations de
  * la partie en cours au joueur
  *
- * @version 0.1
+ * @version 1.0
  * @author Remy G. et Jordan D.
  */
 
@@ -35,7 +35,7 @@ public class InfoJeu extends JPanel{
 	private JButton quit;
 
 	/**
-	 * Bouton qui sauvegarde et quitte la partie
+	 * observateur du bouton qui sauvegarde et/ou quitte la partie
 	 * Action dans la classe BoutonInfoJeu
 	 */
 	private BoutonInfoJeu observateur;
@@ -48,8 +48,8 @@ public class InfoJeu extends JPanel{
 
 	/**
 	 * Constructeur destine a preparer les attributs
-	 * @param partie (partie en cours)
-	 * @param nbBombe (nombre de bombe(s) choisie(s) dans le menu)
+	 * @param partie partie en cours
+	 * @param nbBombe nombre de bombe(s) choisie(s) dans le <code>Menu</code>
 	 */
 	public InfoJeu(Gameplay partie,int nbBombe){
 		super();
@@ -73,7 +73,7 @@ public class InfoJeu extends JPanel{
      * Permet de changer le texte dans le JLabel counter
      * Change le nombre de bombe(s) restante(s)
 	 * Ou affiche "victoire" ou "defaite"
-	 * @param nbEtoiles nombre de marqueur(s') etoile(s)
+	 * @param nbEtoiles nombre de marqueur(s) etoile(s)
      */
 	public void updateCounter(int nbEtoiles){
 		this.counter.setText("Bombes: "+(this.nbBombe-nbEtoiles) );
@@ -86,7 +86,7 @@ public class InfoJeu extends JPanel{
 
 	/**
      * Change le contenu du JButton "quit"
-	 * en "Menu" en cas de vitoire ou défaite
+	 * en "Menu" en cas de vitoire ou defaite
      */
 	public void setButtonToMenu(){
 		this.quit.setText("Menu");
