@@ -30,7 +30,7 @@ public class Gameplay extends JFrame{
 	 */
 	public Gameplay(int nbBombe, int lignes,int colonnes){
 		super("Demineur par J.Demartin et R.Gaudru");
-		
+
 		int maximum;
 		if(lignes>colonnes){	//permet de rendre l'affichage plus élégant quand le nombre de colonnes est trop grand par rapport au nombre de lignes
 			maximum=lignes;
@@ -45,9 +45,8 @@ public class Gameplay extends JFrame{
 		int tailleY = (maximum+1)*25+(maximum+8)*6; //minimum = (4+1)*25+(4+8)*6 = 197 pixels
 		int tailleXinfo = 150;
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLocationRelativeTo(null);
 		this.setResizable(false);
-		
+
 		this.info = new InfoJeu(this,nbBombe);	//mise en place du panel contenant la grille de jeu
 		info.setPreferredSize(new Dimension(tailleXinfo,tailleY));
 		this.add(info,BorderLayout.EAST);
@@ -55,8 +54,9 @@ public class Gameplay extends JFrame{
 		this.jeu = new Grille(nbBombe,lignes,colonnes,info);	//mise en place du panel contenant les informations sur la partie en cours
 		this.jeu.setPreferredSize(new Dimension(tailleXjeu,tailleY));
 		this.add(this.jeu,BorderLayout.WEST);
-		
+
 		this.setSize(tailleXjeu+tailleXinfo,tailleY);
+		this.setLocationRelativeTo(null);
 	}
 
 	/**

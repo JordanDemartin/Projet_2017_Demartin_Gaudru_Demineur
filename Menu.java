@@ -25,12 +25,12 @@ public class Menu extends JFrame{
 	 * Un espace ou l'utilisateur rentre le nombre de bombes qu'il souhaite
 	 */
 	private JTextField bombesField;
-	
+
 	/**
 	 * Un espace ou l'utilisateur rentre le nombre de lignes qu'il souhaite
 	 */
 	private JTextField lignesField;
-	
+
 	/**
 	 * Un espace ou l'utilisateur rentre le nombre de colonnes qu'il souhaite
 	 */
@@ -43,9 +43,9 @@ public class Menu extends JFrame{
 		super("Demineur par J.Demartin et R.Gaudru");
 		File f = new File("./save.dat");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(400,400);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
-		this.setSize(400,400);
 		this.contenu = new JPanel();
 
 		contenu.setLayout(new GridLayout(4,0,40,40));
