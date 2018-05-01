@@ -79,7 +79,7 @@ public class CliqueCase implements MouseListener {
 	    		}
 	    		if(this.bloc.getFlag() == 1){
 	    			this.bloc.setBackground(new Color(253,106,0));
-	    			this.texte.setText("\u2605"); //affiche étoile
+	    			this.texte.setText("\u2605"); //affiche etoile
 	    		}
 	    		if(this.bloc.getFlag() == 2){
 	    			this.bloc.setBackground(new Color(255,255,50));

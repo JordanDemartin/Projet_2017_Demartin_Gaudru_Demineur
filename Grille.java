@@ -366,7 +366,7 @@ public class Grille extends JPanel{
 				}
 				if(cases[i][j].getFlag() == 1){
 					cases[i][j].setBackground(new Color(253,106,0));
-	    			cases[i][j].alterTexte("\u2605"); //affiche étoile
+	    			cases[i][j].alterTexte("\u2605"); //affiche etoile
 				}else if(cases[i][j].getFlag() == 2){
 					cases[i][j].setBackground(new Color(255,255,50));
 	    			cases[i][j].alterTexte("?");

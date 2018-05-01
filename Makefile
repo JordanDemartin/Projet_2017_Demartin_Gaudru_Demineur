@@ -18,34 +18,34 @@ CLASSES = \
  
 # Regles essentiels 
  
-ActionFenetre.class : ActionFenetre.java Gameplay.class
+ActionFenetre.class : ActionFenetre.java Gameplay.class#
 	$(JC) ActionFenetre.java
 
-BoutonInfoJeu.class : BoutonInfoJeu.java InfoJeu.class Gameplay.class
+BoutonInfoJeu.class : BoutonInfoJeu.java Menu.class Gameplay.class#
 	$(JC) BoutonInfoJeu.java
 
-BoutonsMenu.class : BoutonsMenu.java Menu.class
+BoutonsMenu.class : BoutonsMenu.java Menu.class Gameplay.class#
 	$(JC) BoutonsMenu.java
 
-Case.class : Case.java CliqueCase.class Grille.class
+Case.class : Case.java CliqueCase.class Grille.class#
 	$(JC) Case.java
 
-CliqueCase.class : CliqueCase.java Case.class
+CliqueCase.class : CliqueCase.java Case.class Grille.class#
 	$(JC) CliqueCase.java 
 
-Gameplay.class : Gameplay.java ActionFenetre.class Menu.class
+Gameplay.class : Gameplay.java InfoJeu.class Grille.class#
 	$(JC) Gameplay.java
 
-Grille.class : Grille.java Case.class Gameplay.class
+Grille.class : Grille.java Case.class Gameplay.class InfoJeu.class#
 	$(JC) Grille.java
 
-InfoJeu.class : InfoJeu.java Gameplay.class Gameplay.class
+InfoJeu.class : InfoJeu.java Gameplay.class BoutonInfoJeu.class ActionFenetre.class#
 	$(JC) InfoJeu.java
 
-Menu.class : Menu.java BoutonsMenu.class Gameplay.class
+Menu.class : Menu.java BoutonsMenu.class#
 	$(JC) Menu.java 
 
-Main.class : ${CLASSES}
+Main.class : Main.java Menu.class#
 	$(JC) Main.java
 
 # Regles optionnelles

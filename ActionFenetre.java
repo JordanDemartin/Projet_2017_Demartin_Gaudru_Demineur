@@ -1,7 +1,7 @@
 import java.awt.event.*;
 
 /**
- * La classe <code>ActionFenetre</code> sert a déclencher la sauvgarde en cas de fermeture de la fenetre
+ * La classe <code>ActionFenetre</code> sert a declencher la sauvgarde en cas de fermeture de la fenetre
  * alors que la partie n'est pas finis.
  * 
  * @version 1.0
