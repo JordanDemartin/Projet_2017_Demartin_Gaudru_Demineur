@@ -60,7 +60,7 @@ public class InfoJeu extends JPanel{
 		this.counter.setFont(new Font(null, Font.BOLD, 15));
 		this.add(this.counter);
 
-		this.quit = new JButton("Sauvgarder et Quitter");
+		this.quit = new JButton("Sauvegarder et Quitter");
 		this.add(this.quit);
 		this.observateur = new BoutonInfoJeu(this.partie);
 		this.quit.addActionListener(this.observateur);
