@@ -38,7 +38,7 @@ CliqueCase.class : CliqueCase.java #Case.class #Grille.class
 
 clean :
 	rm *.class
-	rm save.dat
+	if [ -f save.dat ]; then rm save.dat; fi;
 
 test :
 	java Main
